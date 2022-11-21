@@ -36,5 +36,5 @@ I really recommend to [check it out](https://github.com/jorgeloopzz/dotfiles) ðŸ
 ---
 ## **Screnshots**
 
-### [bspwm](https://github.com/Davi-K-Silva/dotfiles/tree/master/.config/bspwm)
+### [bspwm](https://github.com/Davi-K-Silva/dotfiles/tree/main/.config/bspwm)
 ![bspwm](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/master/.screenshots/bspwm.png)

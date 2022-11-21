@@ -1,4 +1,4 @@
-# 
+#
 # GENERAL COMMANDS
 #
 
@@ -17,14 +17,6 @@ super + b
 # Restart configuration file
 super + p
 	pkill -USR1 -x sxhkd
-
-# Toogle microphone
-F8
-	amixer set Capture toggle && amixer get Capture | grep "\[off\]" && notify-send "MIC switched OFF" || notify-send "MIC switched ON"
-
-# Lock screen
-F1
-	betterlockscreen --lock blur
 
 #
 # BSPWM KEYBINDINGS
@@ -55,7 +47,7 @@ super + x
 	bspc node -{c,k}
 
 #
-# move/resize
+# MOVE/RESIZE
 #
 
 # expand a window by moving one of its side outward
@@ -69,3 +61,10 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#
+# SCRENSHOT 
+#
+
+super + shift + {y}
+	mss -o ~/Personal/Screenshots/out.png

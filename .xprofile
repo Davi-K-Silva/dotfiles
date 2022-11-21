@@ -1,2 +1,5 @@
-nitrogen --restore &
+### Mouse Hide ###
 unclutter &
+
+### Enable numlock
+numlockx

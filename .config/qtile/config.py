@@ -79,7 +79,10 @@ keys = [
     Key([], "XF86MonBrightnessDown", lazy.spawn("xbacklight -dec 10")),
 
     #---    Lock screen ---#
-    Key([], "F1", lazy.spawn("betterlockscreen --lock blur"))
+    Key([], "F1", lazy.spawn("betterlockscreen --lock blur")),
+
+    #---    Screenshot ---#
+    Key([], "y", lazy.spawn("mss -o .screenshots/"))
 ]
 
 #---------------#
@@ -113,6 +116,7 @@ layouts = [
                      border_normal="#31748f", border_width=1, margin=8),
     layout.RatioTile(border_focus="#eff108",
                      border_normal="#31748f", border_width=1, margin=8),
+    layout.Floating()
     # layout.Matrix(),
 ]
 

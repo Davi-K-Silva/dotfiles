@@ -37,4 +37,7 @@ I really recommend to [check it out](https://github.com/jorgeloopzz/dotfiles) ðŸ
 ## **Screnshots**
 
 ### [bspwm](https://github.com/Davi-K-Silva/dotfiles/tree/main/.config/bspwm)
-![bspwm](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/master/.screenshots/bspwm.png)
+![bspwm](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/main/.screenshots/bspwm.png)
+
+### [qtile](https://github.com/Davi-K-Silva/dotfiles/tree/main/.config/qtile)
+![qtile](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/main/.screenshots/qtile.png)

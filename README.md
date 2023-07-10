@@ -34,7 +34,7 @@ I used X display in my old setups beacause nvidia can be a lot stuborn with Wayl
 
 ## **Screnshots**
 
-### [Hypeland](https://github.com/Davi-K-Silva/dotfiles/tree/main/.config/hypr)
+### [Hyprland](https://github.com/Davi-K-Silva/dotfiles/tree/main/.config/hypr)
 ![qtile](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/main/.screenshots/hyprland.png)
 
 ### [bspwm [OLD]](https://github.com/Davi-K-Silva/dotfiles/tree/old_dots/.config/bspwm)

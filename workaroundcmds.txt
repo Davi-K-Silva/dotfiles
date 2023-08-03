@@ -1,0 +1,4 @@
+sudo chgrp wheel /sys/class/backlight/amdgpu_bl0/brightness --> brightness work
+sudo chmod g+w /sys/class/backlight/amdgpu_bl0/brightness  --> brightness work 2
+
+xhost +SI:localuser:root --> Graphical apps with sudo

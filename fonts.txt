@@ -1,5 +1,0 @@
-CustomTkinter_shapes_font.otf
-NerdFonts
-'Noto Sans Japanese'
-Roboto-Medium.ttf
-Roboto-Regular.ttf

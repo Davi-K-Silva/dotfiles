@@ -1,3 +1,3 @@
 # **Dotfiles - BSPWM**
 
-![screenshot](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/bspwm/.screenshots/bspwm_25.png)
+![screenshot](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/hyprland/.screenshots/hyprland_25.png)

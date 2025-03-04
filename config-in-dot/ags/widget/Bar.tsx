@@ -31,25 +31,44 @@ function SysTray() {
 
 function Wifi() {
   const network = Network.get_default();
-  const wifi = bind(network, "wifi");
-
-  return (
-    <box visible={wifi.as(Boolean)}>
-      {wifi.as(
-        (wifi) =>
-          wifi && (
-            <box>
-              <label label={bind(wifi, "ssid").as(String)} />
-              <icon
-                tooltipText={bind(wifi, "ssid").as(String)}
-                className="Wifi"
-                icon={bind(wifi, "iconName")}
-              />
-            </box>
-          ),
-      )}
-    </box>
-  );
+  if (network.get_primary() == Network.Primary.WIFI) {
+    const wifi = bind(network, "wifi");
+    return (
+      <box visible={wifi.as(Boolean)}>
+        {wifi.as(
+          (wifi) =>
+            wifi && (
+              <box>
+                <icon
+                  tooltipText={bind(wifi, "ssid").as(String)}
+                  className="Wifi"
+                  icon={bind(wifi, "iconName")}
+                />
+              </box>
+            ),
+        )}
+      </box>
+    );
+  } else if (network.get_primary() == Network.Primary.WIRED) {
+    const wired = bind(network, "wired");
+    return (
+      <box visible={wired.as(Boolean)}>
+        {wired.as(
+          (wired) =>
+            wired && (
+              <box>
+                <icon
+                  tooltipText={bind(wired, "internet").as(String)}
+                  className="Wifi"
+                  icon={bind(wired, "iconName")}
+                />
+              </box>
+            ),
+        )}
+      </box>
+    );
+  }
+  return <box></box>;
 }
 
 function AudioSlider() {
@@ -96,7 +115,10 @@ function Media() {
             />
             <label
               label={bind(ps[0], "metadata").as(
-                () => `${ps[0].title} - ${ps[0].artist}`,
+                () =>
+                  limit(`${ps[0].title}`, 25, "...") +
+                  ` - ` +
+                  limit(`${ps[0].artist}`, 15, "..."),
               )}
             />
           </box>
@@ -135,12 +157,17 @@ function Workspaces() {
 function FocusedClient() {
   const hypr = Hyprland.get_default();
   const focused = bind(hypr, "focusedClient");
-
   return (
     <box className="Focused" visible={focused.as(Boolean)}>
       {focused.as(
         (client) =>
-          client && <label label={bind(client, "title").as(String)} />,
+          client && (
+            <label
+              label={bind(client, "title").as((title) =>
+                limit(title, 20, "..."),
+              )}
+            />
+          ),
       )}
     </box>
   );
@@ -185,4 +212,21 @@ export default function Bar(monitor: Gdk.Monitor) {
       </centerbox>
     </window>
   );
+}
+
+// Aux functions ----------------------------------------- //
+/**
+ * Returns the first `limit` characters from the given `string` and add a 'tail' string.
+ *
+ * @param {String} string
+ * @param {Number} limit
+ * @param {String} tail
+ *
+ * @returns {String}
+ */
+function limit(string = "", limit = 0, tail = "") {
+  if (string.length <= limit) {
+    tail = "";
+  }
+  return string.substring(0, limit).trimEnd() + tail;
 }

@@ -92,7 +92,7 @@
         "on-click": "pavucontrol"
     },
     "network": {
-        "interface": "wlp4s0",
+        //"interface": "~/.config/waybar/get_interface.sh",
         "format": "{ifname}",
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{bandwidthDownBytes} ⇣ {ipaddr}/{cidr} ",

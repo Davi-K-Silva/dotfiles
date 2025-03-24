@@ -1,5 +1,5 @@
-import { App } from "astal/gtk3";
-import { Variable, GLib, bind } from "astal";
+import { App, Widget } from "astal/gtk3";
+import { Variable, GLib, bind, exec } from "astal";
 import { Astal, Gtk, Gdk } from "astal/gtk3";
 import Hyprland from "gi://AstalHyprland";
 import Mpris from "gi://AstalMpris";
@@ -7,6 +7,9 @@ import Battery from "gi://AstalBattery";
 import Wp from "gi://AstalWp";
 import Network from "gi://AstalNetwork";
 import Tray from "gi://AstalTray";
+import Bluetooth from "gi://AstalBluetooth";
+import Apps from "gi://AstalApps";
+import MprisPlayers from "../Media-player/MediaPlayer";
 
 function SysTray() {
   const tray = Tray.get_default();
@@ -34,16 +37,18 @@ function Wifi() {
   if (network.get_primary() == Network.Primary.WIFI) {
     const wifi = bind(network, "wifi");
     return (
-      <box visible={wifi.as(Boolean)}>
+      <box className="Wifi" visible={wifi.as(Boolean)}>
         {wifi.as(
           (wifi) =>
             wifi && (
-              <box>
-                <icon
-                  tooltipText={bind(wifi, "ssid").as(String)}
-                  className="Wifi"
-                  icon={bind(wifi, "iconName")}
-                />
+              <box className="Wifi">
+                <button onClick="kitty nmtui">
+                  <icon
+                    tooltipText={bind(wifi, "ssid").as(String)}
+                    className="Wifi"
+                    icon={bind(wifi, "iconName")}
+                  />
+                </button>
               </box>
             ),
         )}
@@ -52,14 +57,13 @@ function Wifi() {
   } else if (network.get_primary() == Network.Primary.WIRED) {
     const wired = bind(network, "wired");
     return (
-      <box visible={wired.as(Boolean)}>
+      <box visible={wired.as(Boolean)} className="Wifi">
         {wired.as(
           (wired) =>
             wired && (
-              <box>
+              <box className="Wifi">
                 <icon
                   tooltipText={bind(wired, "internet").as(String)}
-                  className="Wifi"
                   icon={bind(wired, "iconName")}
                 />
               </box>
@@ -73,9 +77,32 @@ function Wifi() {
 
 function AudioSlider() {
   const speaker = Wp.get_default()?.audio.defaultSpeaker!;
+  const bluetoth = Bluetooth.get_default();
+
+  // const apps = new Apps.Apps();
+  // const pulsemixer = apps.exact_query("Volume Control");
+
   return (
     <box className="AudioSlider" css="min-width: 140px">
-      <icon icon={bind(speaker, "volumeIcon")} />
+      {bind(bluetoth, "isConnected").as((con) =>
+        con ? (
+          <icon
+            icon={bind(
+              bluetoth.get_devices().find((device) => device.connected)!,
+              "icon",
+            )}
+            tooltipText={bind(
+              bluetoth.get_devices().find((device) => device.connected)!,
+              "name",
+            )}
+          />
+        ) : (
+          <label label="" visible={bind(bluetoth, "isConnected")} />
+        ),
+      )}
+      <button onClick="pavucontrol">
+        <icon icon={bind(speaker, "volumeIcon")} />
+      </button>
       <slider
         hexpand
         onDragged={({ value }) => (speaker.volume = value)}
@@ -99,29 +126,38 @@ function BatteryLevel() {
 }
 
 function Media() {
-  const mpris = Mpris.get_default();
+  const newWindow = new Widget.Window({}, MprisPlayers());
+  newWindow.visible = false;
 
+  function onClicked(self: Widget.Button) {
+    newWindow.visible = !newWindow.visible;
+  }
+
+  const mpris = Mpris.get_default();
   return (
     <box className="Media">
       {bind(mpris, "players").as((ps) =>
         ps[0] ? (
-          <box>
-            <box
-              className="Cover"
-              valign={Gtk.Align.CENTER}
-              css={bind(ps[0], "coverArt").as(
-                (cover) => `background-image: url('${cover}');`,
-              )}
-            />
-            <label
-              label={bind(ps[0], "metadata").as(
-                () =>
-                  limit(`${ps[0].title}`, 25, "...") +
-                  ` - ` +
-                  limit(`${ps[0].artist}`, 15, "..."),
-              )}
-            />
-          </box>
+          <button onClicked={onClicked} className="Mplayer">
+            <box>
+              <box
+                className="Cover"
+                valign={Gtk.Align.CENTER}
+                css={bind(ps[0], "coverArt").as(
+                  (cover) => `background-image: url('${cover}');`,
+                )}
+              />
+              <label
+                visible={bind(ps[0], "canPlay")}
+                label={bind(ps[0], "metadata").as(
+                  () =>
+                    limit(`${ps[0].title}`, 25, "...") +
+                    " - " +
+                    limit(`${ps[0].artist}`, 15, "..."),
+                )}
+              />
+            </box>
+          </button>
         ) : (
           <label label="Nothing Playing" />
         ),

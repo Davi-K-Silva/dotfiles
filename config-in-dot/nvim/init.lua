@@ -1,0 +1,2 @@
+require("testdir")
+print("hello")

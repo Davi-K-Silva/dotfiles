@@ -1,2 +1,1 @@
-require("testdir")
-print("hello")
+require("dkconfigs")

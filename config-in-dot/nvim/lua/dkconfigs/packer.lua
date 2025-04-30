@@ -81,15 +81,9 @@ packer.startup(function(use)
   use "Hoffs/omnisharp-extended-lsp.nvim" -- for proper go-to-definition support for omnisharp
   ---------------------------------------------------------------------------------------------------------
   ------------------------------------------------ UI -----------------------------------------------------
+  use 'nvim-tree/nvim-web-devicons'         -- more icons for dev 
   use 'nvim-tree/nvim-tree.lua'             -- fancy file explorer
-  use {
-      'akinsho/bufferline.nvim',            -- tabline plugin
-      tag = "v3.*",
-      requires = 'nvim-tree/nvim-web-devicons'
-  }
   use 'lukas-reineke/indent-blankline.nvim' -- showing indentation (especially usefull for Python)
-  use 'famiu/bufdelete.nvim'                -- required to fix closing window issues with bufferline plugin
-
   -- Lua line
   use {
       'nvim-lualine/lualine.nvim',

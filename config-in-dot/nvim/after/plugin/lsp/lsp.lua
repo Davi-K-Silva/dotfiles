@@ -52,7 +52,6 @@ local servers = {}
 local linters_and_formatters = {
     'black',
     'ruff',
-    'csharpier',
     'jsonlint',
     'markdownlint',
 }
@@ -88,9 +87,9 @@ local on_attach = function(client, bufnr)
         function() vim.lsp.buf.format { async = true } end,
         bufopts
     )
-    vim.keymap.set('n', 'gK', function()
-        local new_config = not vim.diagnostic.config().virtual_lines
-        vim.diagnostic.config({ virtual_lines = new_config })
+    vim.keymap.set('n', '<space>gG', function()
+           local current = vim.diagnostic.config().virtual_lines or false
+           vim.diagnostic.config({ virtual_lines = not current })
     end, { desc = 'Toggle diagnostic virtual_lines' })
     ---------------------------------------------------------------------------------------------------------
 end
@@ -104,24 +103,24 @@ local default_config = { -- Default config for all language servers
 -- Read README at official omnisharp repo: https://github.com/OmniSharp/omnisharp-roslyn
 -- TODO:    OmniSharp startup is consuming a lot of memory! This is potentially related to some log buffering
 --          that is done by lspconfig. This is a crucial issue and has to be fixed ASAP!
-local omnisharp_executable = "omnisharp";
-servers['omnisharp'] = { -- Configuration for omnisharp
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers = {
-        ["textDocument/definition"] = require('omnisharp_extended').handler,
-    },
-    cmd = { omnisharp_executable, '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
-    -- enable_editorconfig_support = true, -- setting from .editorconfig
-    -- enable_ms_build_load_projects_on_demand = true,
-    -- enable_roslyn_analyzers = true,
-    -- analyze_open_documents_only = true,
-    -- organize_imports_on_format = true,
-    -- may result in slow completion responsiveness
-    -- enable_import_completion = true,
-    -- sdk_include_prereleases = true,
-    -- rest of your settings
-}
+-- local omnisharp_executable = "omnisharp";
+-- servers['omnisharp'] = { -- Configuration for omnisharp
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     handlers = {
+--         ["textDocument/definition"] = require('omnisharp_extended').handler,
+--     },
+--     cmd = { omnisharp_executable, '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
+--     -- enable_editorconfig_support = true, -- setting from .editorconfig
+--     -- enable_ms_build_load_projects_on_demand = true,
+--     -- enable_roslyn_analyzers = true,
+--     -- analyze_open_documents_only = true,
+--     -- organize_imports_on_format = true,
+--     -- may result in slow completion responsiveness
+--     -- enable_import_completion = true,
+--     -- sdk_include_prereleases = true,
+--     -- rest of your settings
+-- }
 servers['lua_ls'] = {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -171,4 +170,9 @@ for lsp, config in pairs(servers) do -- Setup LSP servers
 end
 ---------------------------------------------- KEYMAPS ------------------------------------------------------
 vim.keymap.set({ "n", "v" }, "<leader>rl", ":LspRestart<CR>", { silent = false })
+
 -------------------------------------------------------------------------------------------------------------
+vim.keymap.set('n', 'gK', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })

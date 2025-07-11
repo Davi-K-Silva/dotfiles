@@ -76,9 +76,17 @@ packer.startup(function(use)
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
-  use "jose-elias-alvarez/null-ls.nvim"   -- for linting purposes
-  use "folke/trouble.nvim"                -- for LSP\Linter warnings\errors
-  use "Hoffs/omnisharp-extended-lsp.nvim" -- for proper go-to-definition support for omnisharp
+ -- use "jose-elias-alvarez/null-ls.nvim"   -- for linting purposes
+  use {
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+      cmd="Trouble",
+      config = function()
+        require("trouble").setup {}
+      end
+}
+                -- for LSP\Linter warnings\errors
+ --  use "Hoffs/omnisharp-extended-lsp.nvim" -- for proper go-to-definition support for omnisharp
   ---------------------------------------------------------------------------------------------------------
   ------------------------------------------------ UI -----------------------------------------------------
   use 'nvim-tree/nvim-web-devicons'         -- more icons for dev 

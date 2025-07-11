@@ -16,18 +16,18 @@ null_ls.setup({
         formatting.black.with({
             extra_args = { "--line-length=110" }
         }),
-        formatting.csharpier,
-        formatting.prettierd,
-        formatting.latexindent,
+        --formatting.csharpier,
+        --formatting.prettierd,
+        --formatting.latexindent,
         -----------------------------------------------------------------------
         ------------------------------- DIAGNOSTICS ---------------------------
         diagnostics.ruff,
         diagnostics.markdownlint,
         diagnostics.jsonlint,
-        diagnostics.deno_lint,
+        --diagnostics.deno_lint,
         -----------------------------------------------------------------------
         ------------------------------- CODE ACTIONS --------------------------
-        code_actions.eslint_d,
+        --code_actions.eslint_d,
         -----------------------------------------------------------------------
     },
     on_attach = function(client, bufnr)

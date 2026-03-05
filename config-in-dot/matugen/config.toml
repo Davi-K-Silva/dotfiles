@@ -1,0 +1,10 @@
+[config]
+# ...
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty.conf'
+output_path = '~/.config/kitty/themes/Matugen.conf'
+post_hook = "kitty +kitten themes --reload-in=all Matugen"
+
+[templates.quickshell]
+input_path = '~/.config/matugen/templates/quickshell.conf'
+output_path = '~/.config/quickshell/presets/Colors.qml'

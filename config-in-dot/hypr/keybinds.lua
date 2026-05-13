@@ -15,7 +15,7 @@ hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd(terminal))
 
 -- Window management
 hl.bind(mainMod .. " + X",           hl.dsp.window.close())
-hl.bind(mainMod .. " + M",           hl.dsp.exec_cmd("hyprctl dispatch exit"))
+hl.bind(mainMod .. " + M",           hl.dsp.exec_cmd("hyprctl dispatch \"hl.dsp.exit()\""))
 hl.bind(mainMod .. " + V",           hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F",           hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + SHIFT + P",   hl.dsp.window.pseudo())

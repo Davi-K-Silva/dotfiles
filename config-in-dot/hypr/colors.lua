@@ -1,3 +1,3 @@
-background = "rgb(1a110e)"
-color11 = "rgb(9d915d)"
-color14 = "rgb(7e4026)"
+background = "rgb(121318)"
+color11 = "rgb(ab85a2)"
+color14 = "rgb(414e84)"

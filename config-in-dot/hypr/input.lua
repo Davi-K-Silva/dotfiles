@@ -4,7 +4,6 @@
 
 hl.config({
   input = {
-    kb_layout = "br",
     kb_variant = "",
     kb_model = "",
     kb_options = "",
@@ -19,4 +18,19 @@ hl.config({
   cursor = {
     no_hardware_cursors = true,
   },
+})
+
+hl.device({
+  name = "at-translated-set-2-keyboard",
+  kb_layout = "br",
+})
+
+hl.device({
+  name = "dell-computer-corp-dell-universal-receiver",
+  kb_layout = "br",
+})
+
+hl.device({
+  name = "keychron-keychron-k2-he-keyboard",
+  kb_layout = "us",
 })

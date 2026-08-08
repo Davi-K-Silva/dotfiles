@@ -34,6 +34,16 @@ hl.window_rule({
 })
 
 hl.window_rule({
+    name  = "pic-in-pic-float",
+    match = { title = "Picture-in-Picture" },
+
+    float  = true,
+   -- size   = { 300, 300 },
+   -- center = true,
+})
+
+
+hl.window_rule({
     name  = "suppress-maximize-events",
     match = { class = ".*" },
 

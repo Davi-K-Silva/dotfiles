@@ -2,7 +2,7 @@
 ------ KEYBINDINGS ------
 -------------------------
 local terminal = "kitty"
-local fileManager = "cosmic-files"
+local fileManager = "yazi"
 local menu = "wofi --show drun"
 local shape_theme = "~/Desktop/shape-theme/theme-menu.sh"
 local shape_theme_fill = "~/Desktop/shape-theme/change-theme-menu-wallcrop.sh"
@@ -29,7 +29,11 @@ hl.bind(mainMod .. " + W",           hl.dsp.exec_cmd(shape_theme))
 hl.bind(mainMod .. " + SHIFT + W",   hl.dsp.exec_cmd(shape_theme_fill))
 hl.bind(mainMod .. " + SHIFT + L",   hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + Z",           hl.dsp.exec_cmd("hexecute"))
-hl.bind(mainMod .. " + Print",       hl.dsp.exec_cmd("region=$(slurp); sleep 0.5; grim -g \"$region\" ~/$(date +'%s_grim.png')"))
+--hl.bind(mainMod .. " + Print",       hl.dsp.exec_cmd("region=$(slurp); sleep 0.5; grim -g \"$region\" ~/$(date +'%s_grim.png')"))
+hl.bind(mainMod .. " + Print",         hl.dsp.exec_cmd("hyprpicker -r -z & sleep 0.1 && grim -g \"$(slurp -d)\" - | wl-copy; pkill hyprpicker"))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprpicker -r -z & sleep 0.1 && region=$(slurp -d); grim -g \"$region\" ~/$(date +'%s_grim.png'); pkill hyprpicker"))
+hl.bind(mainMod .. " + ALT + Print",     hl.dsp.exec_cmd("hyprpicker -r -z & sleep 0.1 && grim -g \"$(slurp -d)\" - | tesseract stdin stdout 2>/dev/null --psm 4 | sed -E ':a;N;$!ba;s/\\n+/\\n/g' | wl-copy; pkill hyprpicker"))
+hl.bind(mainMod .. " + ALT + P + Print", hl.dsp.exec_cmd("hyprpicker -r -z & sleep 0.1 && grim -g \"$(slurp -d)\" - | tesseract stdin stdout 2>/dev/null -l por --psm 4 | sed -E ':a;N;$!ba;s/\\n+/\\n/g' | wl-copy; pkill hyprpicker"))
 
 -- Move focus with mainMod + arrow keys / vim motions
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -62,6 +66,9 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Multimedia keys for volume and LCD brightness
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"),       { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 hl.bind("XF86AudioRaiseVolume",  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume",  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute",         hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })

@@ -31,6 +31,13 @@ hl.device({
 })
 
 hl.device({
+  name = "keychron--keychron-link--keyboard",
+  kb_layout = "us",
+  kb_variant = "intl",
+})
+
+hl.device({
   name = "keychron-keychron-k2-he-keyboard",
   kb_layout = "us",
+  kb_variant = "intl",
 })

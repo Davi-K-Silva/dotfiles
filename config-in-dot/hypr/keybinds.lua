@@ -2,7 +2,7 @@
 ------ KEYBINDINGS ------
 -------------------------
 local terminal = "kitty"
-local fileManager = "yazi"
+local fileManager = "kitty yazi"
 local menu = "wofi --show drun"
 local shape_theme = "~/Desktop/shape-theme/theme-menu.sh"
 local shape_theme_fill = "~/Desktop/shape-theme/change-theme-menu-wallcrop.sh"
@@ -25,6 +25,7 @@ hl.bind(mainMod .. " + SHIFT + J",   hl.dsp.layout("togglesplit")) -- dwindle on
 hl.bind(mainMod .. " + E",           hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B",           hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + SPACE",       hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + N",           hl.dsp.exec_cmd("qs ipc call notifications toggle"))
 hl.bind(mainMod .. " + W",           hl.dsp.exec_cmd(shape_theme))
 hl.bind(mainMod .. " + SHIFT + W",   hl.dsp.exec_cmd(shape_theme_fill))
 hl.bind(mainMod .. " + SHIFT + L",   hl.dsp.exec_cmd("hyprlock"))

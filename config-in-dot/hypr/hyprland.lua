@@ -16,7 +16,7 @@ require("monitors")
 require("autostart")
 
 -- colors from pywal/matugen
-require("colors")
+colors = require("colors")
 
 -- window style and layout rules
 require("style-layout")

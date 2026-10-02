@@ -8,3 +8,8 @@ post_hook = "kitty +kitten themes --reload-in=all Matugen"
 [templates.quickshell]
 input_path = '~/.config/matugen/templates/quickshell.conf'
 output_path = '~/.config/quickshell/presets/Colors.qml'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland.lua'
+output_path = '~/.config/hypr/colors.lua'
+post_hook = 'hyprctl reload'

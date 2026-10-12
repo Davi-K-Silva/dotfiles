@@ -1,0 +1,30 @@
+import = [
+    "~/.config/alacritty/themes/themes/ayu-mirage.toml"
+]
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "Firacode Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "Firacode Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "Firacode Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Firacode Nerd Font"
+style = "Regular"
+
+[keyboard]
+bindings = [
+   { key = "Return", mods = "Control|Shift", action = "SpawnNewInstance" }
+]
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.2"

@@ -1,27 +1,27 @@
 # **Dotfiles**
 
-These are the config files im using on my environments.
-I plan to upgrade this repo with original scripts and configs, since now is just a frankenstein of other's code. 
+These are the config files I'm using in my environments.
+I plan to upgrade this repo with original scripts and configs, since it is currently just a Frankenstein's monster of other people's code.
 
-My Wayland configs are based from [1amSimp1](https://github.com/1amSimp1e/) files, you can seer them [here](https://github.com/1amSimp1e/dots).
-I based myself and got almost all my old configs from [Jorgeloopz](https://github.com/jorgeloopzz), he has a good taste and organize his configs well. I really recommend to [check it out](https://github.com/jorgeloopzz/dotfiles).​ 
+My Wayland configs are based on [1amSimp1e](https://github.com/1amSimp1e/)'s files; you can see them [here](https://github.com/1amSimp1e/dots).
+I based almost all of my old configs on those from [Jorgeloopz](https://github.com/jorgeloopzz). He has good taste and organizes his configs well. I really recommend [checking them out](https://github.com/jorgeloopzz/dotfiles).
 
-### **Dislaimer**:
-First of all, this repo is far from complete, so be aware that my workarounds and minor diferences are not here, use it wisely and have patience with installation if you are goning to do it. 
+### **Disclaimer**:
+First of all, this repo is far from complete, so be aware that my workarounds and minor differences are not here. Use it wisely and be patient with the installation if you are going to do it.
 
-I used X display in my old setups beacause nvidia can be a lot stuborn with Wayland, that was, until i got my laptop and PC stolen. Since that, got a new laptop with AMD graphics, wich allowed me to use Wayland. Thats the reason for my [old setups](https://github.com/Davi-K-Silva/dotfiles/tree/old_dots) and configs have different settings and programs.
+I used the X display server in my old setups because NVIDIA can be very stubborn with Wayland. That was until my laptop and PC were stolen. Since then, I have gotten a new laptop with AMD graphics, which allowed me to use Wayland. That's why my [old setups](https://github.com/Davi-K-Silva/dotfiles/tree/old_dots) and configs have different settings and programs.
 
 ---
 
 ## **Programs List**
 - Distribution: [Arch Linux](https://wiki.archlinux.org/)												
-- Window Manager: [HyprLand](https://hyprland.org/)
-- Status bar: [WayBar](https://github.com/Alexays/Waybar)
+- Window Manager: [Hyprland](https://hyprland.org/)
+- Status bar: [Waybar](https://github.com/Alexays/Waybar)
 - Terminal emulators: [Kitty](https://wiki.archlinux.org/title/Kitty), [Alacritty](https://wiki.archlinux.org/title/Alacritty)										
 - Shell: [oh-my-zsh](https://ohmyz.sh/)													
 - Prompt: [Starship](https://starship.rs/)													
 - Browsers: [Firefox](https://www.mozilla.org/en-US/firefox/new/)											
-- IDE'S: [VS Code](https://wiki.archlinux.org/title/Visual_Studio_Code)												
+- IDEs: [VS Code](https://wiki.archlinux.org/title/Visual_Studio_Code)
 - Video/Audio player: [MPV](https://wiki.archlinux.org/title/Mpv)												
 - Music player: [Spotify](https://wiki.archlinux.org/title/Spotify)											
 - Background setter: [swww](https://github.com/Horus645/swww)																				
@@ -32,13 +32,13 @@ I used X display in my old setups beacause nvidia can be a lot stuborn with Wayl
 - Network: [Network manager](https://wiki.archlinux.org/title/NetworkManager)																																		
 - Fonts: FiraCode, mononoki, SpaceMono, UbuntuMono
 
-## **Screnshots**
+## **Screenshots**
 
 ### [Hyprland](https://github.com/Davi-K-Silva/dotfiles/tree/main/.config/hypr)
-![qtile](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/main/.screenshots/hyprland.png)
+![hyprland](.screenshots/hyprland.png)
 
 ### [bspwm [OLD]](https://github.com/Davi-K-Silva/dotfiles/tree/old_dots/.config/bspwm)
-![bspwm](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/main/.screenshots/bspwm.png)
+![bspwm](.screenshots/bspwm.png)
 
 ### [qtile [OLD]](https://github.com/Davi-K-Silva/dotfiles/tree/old_dots/.config/qtile)
-![qtile](https://raw.githubusercontent.com/Davi-K-Silva/dotfiles/main/.screenshots/qtile.png)
+![qtile](.screenshots/qtile.png)
